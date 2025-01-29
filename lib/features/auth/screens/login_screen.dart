@@ -1,3 +1,4 @@
+import 'package:ecocoleta/util/images.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
