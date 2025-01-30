@@ -1,5 +1,7 @@
 import 'package:ecocoleta/features/auth/screens/login_screen.dart';
+import 'package:ecocoleta/helper/route_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const EcoColetaApp());
@@ -10,13 +12,11 @@ class EcoColetaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'EcoColeta',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: LoginScreen(),
+    return GetMaterialApp(
+      getPages: RouteHelper.routes,
+      locale: const Locale('pt', 'BR'), 
+      fallbackLocale: const Locale('en', 'US'),
+      home: LoginScreen(), 
     );
   }
 }
