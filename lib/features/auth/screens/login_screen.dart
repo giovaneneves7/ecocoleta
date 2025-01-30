@@ -1,6 +1,8 @@
+import 'package:ecocoleta/helper/route_helper.dart';
 import 'package:ecocoleta/util/images.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -70,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              // Ação de login
+                              Get.toNamed(RouteHelper.getHomeScreen());
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green,
