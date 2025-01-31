@@ -87,7 +87,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text('Não tem uma conta?'),
                             SizedBox(width: 5),
-                            TextField("Cadastre-se"),
                             GestureDetector(
                               onTap: () {
                                 Get.toNamed(RouteHelper.getSignupScreen()); 
