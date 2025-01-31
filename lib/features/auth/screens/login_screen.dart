@@ -82,6 +82,26 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text('Entrar', style: TextStyle(fontSize: 16)),
                           ),
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Não tem uma conta?'),
+                            SizedBox(width: 5),
+                            TextField("Cadastre-se"),
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(RouteHelper.getSignupScreen()); 
+                              },
+                              child: Text(
+                                'Cadastre-se',
+                                style: TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
