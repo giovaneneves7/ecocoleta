@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:ecocoleta/features/auth/screens/login_screen.dart';
 import 'package:ecocoleta/features/auth/screens/signup_screen.dart';
 import 'package:ecocoleta/features/home/screens/home_screen.dart';
-import 'package:ecocoleta/features/map/map_screen.dart';
+import 'package:ecocoleta/features/map/screens/map_screen.dart';
 import 'package:get/get.dart';
 
 /**
