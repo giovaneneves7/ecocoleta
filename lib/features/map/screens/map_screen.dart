@@ -27,75 +27,97 @@ class _MapScreenState extends State<MapScreen> {
   void _showMaterialSelectionModal() {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
-        return Container(
-          height: 300,
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.green,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Selecione o tipo de material a ser descartado:",
-                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            return Container(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.5,
               ),
-              SizedBox(height: 10),
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                children: selectedMaterials.keys.map((material) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedMaterials[material] = !selectedMaterials[material]!;
-                      });
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: selectedMaterials[material]! ? Colors.lightGreenAccent : Colors.white,
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Selecione o tipo de material a ser descartado:",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 10),
+                  Expanded(
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      children: selectedMaterials.keys.map((material) {
+                        return GestureDetector(
+                          onTap: () {
+                            setModalState(() {
+                              selectedMaterials[material] =
+                                  !selectedMaterials[material]!;
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: selectedMaterials[material]!
+                                  ? Colors.lightGreenAccent
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/${material.toLowerCase()}.png',
+                                  width: 50,
+                                  height: 50,
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  material,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.green,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/${material.toLowerCase()}.png',
-                            width: 50,
-                            height: 50,
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            material,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
                     ),
-                  );
-                }).toList(),
+                    child: Text(
+                      "Concluir",
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 15),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.green,
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                ),
-                child: Text("Concluir", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              ),
-            ],
-          ),
+            );
+          },
         );
       },
     );
