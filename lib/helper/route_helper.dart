@@ -28,7 +28,7 @@ class RouteHelper{
   // Registro de rotas [ Adicionar todas as rotas do app aqui ] 
   static List<GetPage> routes = [
     GetPage(name: login, page: () => LoginScreen()),
-    GetPage(name: home, page: () => HomeScreen(Get.parameters['is_catador']!)),
+    GetPage(name: home, page: () => HomeScreen(isCatador: Get.parameters['is_catador']!)),
     GetPage(name: map, page: () => MapScreen()),
     GetPage(name: signup, page: () => SignupScreen())
   ];
