@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     super.initState();
 
-    _screens = Widget.isCatador ?
+    _screens = widget.isCatador ?
       [CatadorHomeScreen(), SettingsScreen()] :
       [MoradorHomeScreen(), SettingsScreen()];
 
