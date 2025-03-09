@@ -20,7 +20,7 @@ class RouteHelper{
 
   static String getLoginScreen() => login;
   static String getHomeScreen(bool isCatador){
-    return '$home?is_catador=$isCatador';
+    return '$home?is_catador=${isCatador.toString()}';
   }
   static String getMapScreen() => map;
   static String getSignupScreen() => signup;
@@ -28,7 +28,14 @@ class RouteHelper{
   // Registro de rotas [ Adicionar todas as rotas do app aqui ] 
   static List<GetPage> routes = [
     GetPage(name: login, page: () => LoginScreen()),
-    GetPage(name: home, page: () => HomeScreen(isCatador: Get.parameters['is_catador']!)),
+    GetPage(name: home, page: () {
+      
+      final isCatadorString = Get.parameters['is_catador'];
+      final isCatador = isCatadorString != null ? isCatadorString.toLowerCase() == 'true' : false;
+
+      return HomeScreen(isCatador: isCatador);
+
+    }
     GetPage(name: map, page: () => MapScreen()),
     GetPage(name: signup, page: () => SignupScreen())
   ];

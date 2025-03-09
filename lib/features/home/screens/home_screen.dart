@@ -1,5 +1,6 @@
 import 'package:ecocoleta/common/widgets/custom_bottom_navigation_bar.dart';
 import 'package:ecocoleta/features/home/screens/modules/morador_home_screen.dart';
+import 'package:ecocoleta/features/home/screens/modules/catador_home_screen.dart';
 import 'package:ecocoleta/features/home/widgets/components/map_pin_button.dart';
 import 'package:ecocoleta/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
