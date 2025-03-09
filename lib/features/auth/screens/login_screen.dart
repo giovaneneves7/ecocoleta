@@ -76,9 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               String email = _emailController.text;
 
                               if(email == "morador@gmail.com"){
-                                Get.toNamed(RouteHelper.getHomeScreen(isCatador: false));
+                                Get.toNamed(RouteHelper.getHomeScreen(false));
                               } else if(email == "catador@gmail.com") {
-                                Get.toNamed(RouteHelper.getHomeScreen(isCatador: true));
+                                Get.toNamed(RouteHelper.getHomeScreen(true));
                               } else {
                                 Get.snackbar("Erro", "Usuário não encontrado!");
                               }

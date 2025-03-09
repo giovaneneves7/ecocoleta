@@ -9,18 +9,33 @@ import 'package:flutter/material.dart';
 * @since v0.0.1
 */
 class HomeScreen extends StatefulWidget {
+
+  final bool isCatador;
+
+  HomeScreen({required this.isCatador});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  final List<Widget> _screens = [
-    MoradorHomeScreen(),
-    SettingsScreen()
-  ];
+  final bool isCatador;
+
+  late List<Widget> _screens;
 
   int _selectedIndex = 0;
+
+  @override
+  void initState(){
+
+    super.initState();
+
+    _screens = Widget.isCatador ?
+      [CatadorHomeScreen(), SettingsScreen()] :
+      [MoradorHomeScreen(), SettingsScreen()];
+
+  }
 
   void _onItemTapped(int index) {
     setState(() {
