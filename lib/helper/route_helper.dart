@@ -19,14 +19,16 @@ class RouteHelper{
   static const String signup = '/signup';
 
   static String getLoginScreen() => login;
-  static String getHomeScreen() => home;
+  static String getHomeScreen(bool isCatador){
+    return '$home?is_catador=$isCatador';
+  };
   static String getMapScreen() => map;
   static String getSignupScreen() => signup;
 
   // Registro de rotas [ Adicionar todas as rotas do app aqui ] 
   static List<GetPage> routes = [
     GetPage(name: login, page: () => LoginScreen()),
-    GetPage(name: home, page: () => HomeScreen()),
+    GetPage(name: home, page: () => HomeScreen(Get.parameters['is_catador']!)),
     GetPage(name: map, page: () => MapScreen()),
     GetPage(name: signup, page: () => SignupScreen())
   ];

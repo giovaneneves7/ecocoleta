@@ -72,7 +72,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              Get.toNamed(RouteHelper.getHomeScreen());
+                              
+                              String email = _emailController.text;
+
+                              if(email == "morador@gmail.com"){
+                                Get.toNamed(RouteHelper.getHomeScreen(isCatador: false));
+                              } else if(email == "catador@gmail.com") {
+                                Get.toNamed(RouteHelper.getHomeScreen(isCatador: true));
+                              } else {
+                                Get.snackbar("Erro", "Usuário não encontrado!");
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green,
