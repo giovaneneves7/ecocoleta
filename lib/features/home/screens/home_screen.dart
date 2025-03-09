@@ -21,8 +21,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  final bool isCatador;
-
   late List<Widget> _screens;
 
   int _selectedIndex = 0;
