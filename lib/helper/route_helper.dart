@@ -35,7 +35,7 @@ class RouteHelper{
 
       return HomeScreen(isCatador: isCatador);
 
-    }
+    }),
     GetPage(name: map, page: () => MapScreen()),
     GetPage(name: signup, page: () => SignupScreen())
   ];
