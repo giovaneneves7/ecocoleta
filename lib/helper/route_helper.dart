@@ -21,7 +21,7 @@ class RouteHelper{
   static String getLoginScreen() => login;
   static String getHomeScreen(bool isCatador){
     return '$home?is_catador=$isCatador';
-  };
+  }
   static String getMapScreen() => map;
   static String getSignupScreen() => signup;
 
